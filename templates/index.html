@@ -1,0 +1,1476 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css">
+    <title>Calculator</title>
+    
+</head>
+<body background='templates/bgImg.jpg'>
+    <div id="gj"></div>
+    <div id="main">
+      <div id="reader">
+        <span id="num"></span>
+        <span id="sym"></span>
+        <span id="num2"></span>
+        <span id="res"></span>
+      </div>
+      <div class="inner">
+        <div class="clearall item" onmousedown='down(clearall)' onmouseup="up(clearall)">AC</div>  
+        <div class="delet item" onmousedown='down(delet)' onmouseup="up(delet)">C</div>
+        <div class="percent item" onmousedown='down(percent)' onmouseup="up(percent)">%</div>
+        <div class="divide item" onmousedown='down(divide)' onmouseup="up(divide)">/</div>
+        <div class="seven item" onmousedown="down(seven)" onmouseup="up(seven)">7</div>
+        <div class="eight item" onmousedown='down(eight)' onmouseup="up(eight)">8</div>
+        <div class="nine item" onmousedown='down(nine)' onmouseup="up(nine)">9</div>
+        <div class="multi item" onmousedown='down(multi)' onmouseup="up(multi)">*</div>
+        <div class="four item" onmousedown='down(four)' onmouseup="up(four)">4</div>
+        <div class="five item" onmousedown='down(five)' onmouseup="up(five)">5</div>
+        <div class="six item" onmousedown='down(six)' onmouseup="up(six)">6</div>
+        <div class="supract item" onmousedown='down(supract)' onmouseup="up(supract)">-</div>
+        <div class="one item" onmousedown='down(one)' onmouseup="up(one)">1</div>
+        <div class="two item" onmousedown='down(two)' onmouseup="up(two)">2</div>
+        <div class="three item" onmousedown='down(three)' onmouseup="up(three)">3</div>
+        <div class="add item" onmousedown='down(add)' onmouseup="up(add)">+</div>
+        <div class="item"></div>
+        <div class="zero item"onmousedown='down(zero)' onmouseup="up(zero)">0</div>
+        <div class="dot item" onmousedown='down(dot)' onmouseup="up(dot)">.</div>
+        <div class="equal item" onmousedown='down(equal)' onmouseup="up(equal)">=</div>
+      </div>
+    <script>
+        let k=0,n=0,n2=0,n3,r=0,s,s1,s2,res,symbol,c,p,a,d1=1,d2=1,b,len=[],l=0
+        
+        let main = document.getElementById('main')
+        let gj = document.getElementById('gj')
+        let reader = document.getElementById('reader')
+        let number = document.getElementById('num')
+     
+        let oprtn = document.getElementById('sym')
+        let number2 = document.getElementById('num2')
+        let result = document.getElementById('res')
+        let one = document.getElementsByClassName('one')[0]
+        let two = document.getElementsByClassName('two')[0]
+        let three = document.getElementsByClassName('three')[0]
+        let four = document.getElementsByClassName('four')[0]
+        let five = document.getElementsByClassName('five')[0]
+        let six = document.getElementsByClassName('six')[0]
+        let seven = document.getElementsByClassName('seven')[0]
+        let eight = document.getElementsByClassName('eight')[0]
+        let nine = document.getElementsByClassName('nine')[0]
+        let zero = document.getElementsByClassName('zero')[0]
+        let clearall = document.getElementsByClassName('clearall')[0]
+        let delet = document.getElementsByClassName('delet')[0]
+        let percent = document.getElementsByClassName('percent')[0]
+        let divide = document.getElementsByClassName('divide')[0]
+        let multi = document.getElementsByClassName('multi')[0]
+        let supract = document.getElementsByClassName('supract')[0]
+        let add = document.getElementsByClassName('add')[0]
+        let equal = document.getElementsByClassName('equal')[0]
+        let dot = document.getElementsByClassName('dot')[0]
+        let on = document.getElementsByClassName('on')[0]
+        let h=window.screen.height
+        let w=window.screen.width
+        if(h<=900 && w<=400){
+            main.style.width = '100%' 
+            
+            
+        }
+        else{
+            main.style.width = "25%"
+        }
+        number.innerText = 0
+        document.addEventListener("keydown", down)
+        function down(e){
+            
+            function length(n){
+                b=String(n)
+                len[0]=b.length
+                l=len[0]  
+                if(main.style.width == '25%'){            
+                if(l==13){
+                    if(n=n2){
+                        reader.style.fontSize = '52px'
+                    }
+                    else{
+                        number.style.fontSize = '52px'
+                    }
+                
+                }
+                if(l==14){
+                    if(n=n2){
+                        reader.style.fontSize = '49px'
+                    }
+                    else{
+                        number.style.fontSize = '49px'
+                    }
+                }
+                if(l==15){
+                    if(n=n2){
+                        reader.style.fontSize = '46px'
+                    }
+                    else{
+                        number.style.fontSize = '46px'
+                    }
+                }
+                if(l==16){
+                    if(n=n2){
+                        reader.style.fontSize = '43px'
+                    }
+                    else{
+                        number.style.fontSize = '43px'
+                    }
+                }
+                if(l==17){
+                    if(n=n2){
+                        reader.style.fontSize = '41px'
+                    }
+                    else{
+                        number.style.fontSize = '41px'
+                    }
+                }
+                if(l==18){
+                    if(n=n2){
+                        reader.style.fontSize = '39px'
+                    }
+                    else{
+                        number.style.fontSize = '39px'
+                    }
+                }
+                if(l==19){
+                    if(n=n2){
+                        reader.style.fontSize = '39px'
+                    }
+                    else{
+                        number.style.fontSize = '39px'
+                    }
+                }
+                if(l>19){
+                    number.innerText = number.innerText.slice(0, 19)
+                    result.innerText = result.innerText.slice(0,19)                    
+                }
+                }
+                else if(main.style.width == '100%'){
+                    if(l==11){
+                        if(n=n2){
+                            reader.style.fontSize = '52px'
+                        }
+                        else{
+                            number.style.fontSize = '52px'
+                        }
+                    
+                    }
+                    if(l==12){
+                        if(n=n2){
+                            reader.style.fontSize = '49px'
+                        }
+                        else{
+                            number.style.fontSize = '49px'
+                        }
+                    }
+                    if(l==13){
+                        if(n=n2){
+                            reader.style.fontSize = '46px'
+                        }
+                        else{
+                            number.style.fontSize = '46px'
+                        }
+                    }
+                    if(l==14){
+                        if(n=n2){
+                            reader.style.fontSize = '43px'
+                        }
+                        else{
+                            number.style.fontSize = '43px'
+                        }
+                    }
+                    if(l==15){
+                        if(n=n2){
+                            reader.style.fontSize = '40px'
+                        }
+                        else{
+                            number.style.fontSize = '40px'
+                        }
+                    }
+                    if(l==16){
+                        if(n=n2){
+                            reader.style.fontSize = '37px'
+                        }
+                        else{
+                            number.style.fontSize = '37px'
+                        }
+                    }
+                    if(l==17){
+                        if(n=n2){
+                            reader.style.fontSize = '35px'
+                        }
+                        else{
+                            number.style.fontSize = '35px'
+                        }
+                    }
+                    if(l==18){
+                        if(n=n2){
+                            reader.style.fontSize = '33px'
+                        }
+                        else{
+                            number.style.fontSize = '33px'
+                        }
+                    }
+                    if(l==19){
+                        if(n=n2){
+                            reader.style.fontSize = '33px'
+                        }
+                        else{
+                            number.style.fontSize = '33px'
+                        }
+                    }
+                    if(l>19){
+                        number.innerText = number.innerText.slice(0, 19)
+                        result.innerText = result.innerText.slice(0,19)                    
+                    }
+                }
+                
+    
+                
+            }
+            
+            if(event.key == '+' || event.key == '-' || event.key == '*' || event.key == '/'){
+                r=1
+            }
+            else if(e==add || e==supract || e==multi || e==divide || e==percent){
+                r=1
+            }
+
+            if(r==0){
+                
+                if(e==one || event.key == '1'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=1
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 1
+                                n=number.innerText
+                            }
+                            else{
+                            n=1
+                            number.innerText += n
+                            n = number.innerText
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                if(e==two || event.key=='2'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=2
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 2
+                                n=number.innerText
+                            }
+                            else{
+                                n=2
+                                number.innerText += n
+                                n=number.innerText
+                            }
+                        }
+                    }
+                
+
+                    
+                }
+                if(e==three || event.key=='3'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=3
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 3
+                                n=number.innerText
+                            }
+                            else{
+                                n=3
+                                number.innerText += n
+                                n = number.innerText
+                            }
+                        }
+                    }
+                }
+                if(e==four || event.key == '4'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=4
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 4
+                                n=number.innerText
+                            }
+                            else{
+                                n=4
+                                number.innerText += n
+                                n = number.innerText
+                            }
+                        }
+                    }
+                }
+                if(e==five || event.key == '5'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=5
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 5
+                                n=number.innerText
+                            }
+                            else{
+                                n=5
+                                number.innerText += n
+                                n = number.innerText
+                            }
+                        }
+                    }
+                }
+                if(e==six || event.key == '6'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=6
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 6
+                                n=number.innerText
+                            }
+                            else{
+                                n=6
+                                number.innerText += n
+                                n = number.innerText
+                            }
+                        }
+                    }
+                }
+                if(e==seven || event.key=='7'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=7
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 7
+                                n=number.innerText
+                            }
+                            else{
+                                n=7
+                                number.innerText += n
+                                n = number.innerText
+                            }
+                        }
+                    }
+                }
+                if(e==eight || event.key=='8'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=8
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 8
+                                n=number.innerText
+                            }
+                            else{
+                                n=8
+                                number.innerText += n
+                                n = number.innerText
+                            }
+                        }
+                    }
+                }
+                if(e==nine || event.key=='9'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=9
+                            number.innerText += n
+                            n=number.innerText
+                            p=0
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 9
+                                n=number.innerText
+                            }
+                            else{
+                                n=9
+                                number.innerText += n
+                                n = number.innerText
+                            }
+                        }
+                    }
+                }
+                if(e==zero || event.key=='0'){
+                    length(n)
+                    if(l<19){
+                        
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            n=0
+                            number.innerText += n
+                            n=number.innerText
+                        }
+                        else{
+                            if(n===0){
+                                number.innerText = 0
+                            }
+                            else{
+                                n=0
+                                number.innerText +=n
+                                n=number.innerText
+                            }
+                        }
+                        
+                    }
+                }
+                if(e==dot || event.key=='.'){
+                    length(n)
+                    if(l<19){
+                        if(p==1){
+                            number.innerText = ''
+                            result.innerText = ''
+                            
+                            number.innerText = '0.'
+                            n=number.innerText
+                        }
+                        else{
+                            if(n==0){
+                                number.innerText = '0.'
+                                n=number.innerText
+
+                                d1=0
+                            }
+                            else{
+                                if(d1==1){
+                                    n='.'
+                                    number.innerText +=n
+                                    n=number.innerText
+                                    d1=0
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+                if(e==equal || event.key=='Enter'){
+                    Point(n)
+                    number.innerText=n
+                    n=0
+                    c=1
+                    p=1
+                    
+                    l=0
+                    
+                    if(d1==0){
+                        d1=1
+                    }
+                                        
+                    
+                }
+                if(e==clearall || event.key=='Delete'){
+                    number.innerText = 0
+                    number2.innerText = ''
+                    result.innerText = ''
+                    oprtn.innerText = ''
+                    reader.style.fontSize = '55px'
+                    r=0
+                    n=0
+                    n2=0
+                    res=0
+                    c=0
+                    p=0
+                    a=0
+                    d1=1
+                    d2=1
+                    fontNorm()
+                    l=0
+                    
+                }
+                if(e==delet || event.key=='Backspace'){
+                    
+                    if(c==1){
+                        Pass
+                        
+                        /*if(n==0 || n==1 || n==2 || n==3 || n==4 || n==5 || n==6 || n==7 || n==8 || n==9){
+                            result.innerText = ''
+                            number.innerText = 0
+                            n=0
+                            p=0
+                        }
+                        else{
+                            s1 = n
+                            result.innerText = ''
+                            s1 = s1.slice(0, -1)
+                            n = s1
+                            number.innerText = n
+                        }*/
+                            
+                    }
+                    else{
+                        
+                        if(n==0 || n==1 || n==2 || n==3 || n==4 || n==5 || n==6 || n==7 || n==8 || n==9){
+
+                            //s1=number.innerText
+                            //s1=s1.slice(0, -1)
+                            number.innerText = 0
+                            n=0
+                            p=0
+                            d1=1
+                            l=0
+                            
+                        }
+                        else{
+                            length(n)
+                            s1=number.innerText
+                            s1=s1.slice(0, -1)
+                            n=s1
+                            number.innerText = s1
+                            
+                            //gj.innerText = n
+                        }
+                    }
+                        
+                        
+                    
+                    
+                }
+                
+                
+            }
+            if(r==1){
+                if(e==add || event.key == '+'){
+                    if(p==1 && a==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        c=0
+                        symbol = '+'
+                        result.innerText = ''
+                        number.innerText = k
+                        oprtn.innerText = symbol
+                        n=number.innerText
+                        p=0
+                        a=0
+                    }
+                    if(res!=1){
+                        //Point(n)
+                        l=0
+                        reader.style.fontSize = '55px'
+                        fontDcr()
+                        
+                        symbol='+'
+                        
+                        if(n!==0){
+                            Point(n)
+                            number.innerText = n
+                        }
+                        
+                        oprtn.innerText = symbol
+                        
+                    }
+                    
+                    if(res==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        symbol = '+'
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        if(oprtn.innerText=='+'){
+                        res = parseFloat(n+n2)
+                        }
+                        if(oprtn.innerText=='-'){
+                            res = parseFloat(n-n2)
+                        }
+                        if(oprtn.innerText=='*'){
+                            res = parseFloat(n*n2)
+                        }
+                        if(oprtn.innerText=='/'){
+                            res = parseFloat(n/n2)
+                        }
+                        if(oprtn.innerText=='')
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        number.innerText = res
+                        oprtn.innerText = symbol
+                        n = number.innerText 
+                        n2=0
+                        res=0              
+                        c=1  
+                        p=1 
+                    }
+                }
+                if(e==supract || event.key == '-'){
+                    if(p==1 && a==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        c=0
+                        symbol = '-'
+                        result.innerText = ''
+                        number.innerText = k
+                        oprtn.innerText = symbol
+                        n=number.innerText
+                        p=0
+                        a=0
+                    }
+                    if(res!=1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        fontDcr()
+                        symbol='-'
+                        if(n!==0){
+                            Point(n)
+                            number.innerText = n
+                        }
+                        
+                        oprtn.innerText = symbol
+                    }
+                    if(res==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        symbol = '-'
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        if(oprtn.innerText=='+'){
+                            res = parseFloat(n+n2)
+                        }
+                        if(oprtn.innerText=='-'){
+                            res = parseFloat(n-n2)
+                        }
+                        if(oprtn.innerText=='*'){
+                            res = parseFloat(n*n2)
+                        }
+                        if(oprtn.innerText=='/'){
+                            res = parseFloat(n/n2)
+                        }
+                        //res = parseFloat(n-n2)
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        number.innerText = res
+                        oprtn.innerText = symbol
+                        n = number.innerText 
+                        n2=0
+                        res = 0                       
+                        c=1  
+                        p=1 
+                    }
+                }
+                if(e==multi || event.key == '*'){
+                    if(p==1 && a==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        c=0
+                        symbol = '*'
+                        result.innerText = ''
+                        number.innerText = k
+                        oprtn.innerText = symbol
+                        n=number.innerText
+                        p=0
+                        a=0
+                    }
+                    if(res!==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        fontDcr()
+                        symbol='*'
+                        if(n!=0){
+                            Point(n)
+                            number.innerText = n
+                        }
+                        
+                        oprtn.innerText = symbol
+                    }
+                    if(res==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        symbol = '*'
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        if(oprtn.innerText=='+'){
+                            res = parseFloat(n+n2)
+                        }
+                        if(oprtn.innerText=='-'){
+                            res = parseFloat(n-n2)
+                        }
+                        if(oprtn.innerText=='*'){
+                            res = parseFloat(n*n2)
+                        }
+                        if(oprtn.innerText=='/'){
+                            res = parseFloat(n/n2)
+                        }
+                        //res = parseFloat(n*n2)
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        number.innerText = res
+                        oprtn.innerText = symbol
+                        n = number.innerText
+                        n2=0 
+                        res = 0                       
+                        c=1  
+                        p=1 
+                    }
+                }
+                if(e==divide || event.key == '/'){
+                    if(p==1 && a==1){
+                        c=0
+                        symbol = '/'
+                        result.innerText = ''
+                        number.innerText = k
+                        oprtn.innerText = symbol
+                        n=number.innerText
+                        a=0
+                        p=0
+                        l=0
+                        reader.style.fontSize = '55px'
+                    }
+                    if(res!=1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        fontDcr()
+                        symbol='/'
+                        if(n!==0){
+                            Point(n)
+                            number.innerText = n
+                        }
+                        
+                        oprtn.innerText = symbol
+                    }
+                    if(res==1){
+                        l=0
+                        reader.style.fontSize = '55px'
+                        //fontDcr()
+                        symbol = '/'
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        if(oprtn.innerText=='+'){
+                            res = parseFloat(n+n2)
+                        }
+                        if(oprtn.innerText=='-'){
+                            res = parseFloat(n-n2)
+                        }
+                        if(oprtn.innerText=='*'){
+                            res = parseFloat(n*n2)
+                        }
+                        if(oprtn.innerText=='/'){
+                            res = parseFloat(n/n2)
+                        }
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        number.innerText = res
+                        oprtn.innerText = symbol
+                        n = number.innerText
+                        n2=0
+                        res = 0                       
+                        c=1  
+                        p=1 
+                        
+                    }
+                }
+                if(e==percent){
+                    if(res==1){
+              
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        if(oprtn.innerText=='+'){
+                            res = parseFloat(n+n2)
+                        }
+                        if(oprtn.innerText=='-'){
+                            res = parseFloat(n-n2)
+                        }
+                        if(oprtn.innerText=='*'){
+                            res = parseFloat(n*n2)
+                        }
+                        if(oprtn.innerText=='/'){
+                            res = parseFloat(n/n2)
+                        }
+                        //res = parseFloat(n/n2)
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        n2=0
+                        n = res
+                        res = 0                       
+                        c=1  
+                        p=1 
+                        n = parseFloat(n)
+                        n = n/100
+                        number.innerText = n
+                        r=0
+                        l=0
+                        fontNorm()
+                    }
+                    else if(p==1){
+                        //result.innerText = ''
+                        if(p==1 && a==1){
+                            result.innerText = ''
+                            n=k
+                            a=0
+                            p=0
+                        }                      
+                        n = parseFloat(n)
+                        n = n/100
+                        number.innerText = ''
+                        oprtn.innerText = ''
+                        number.innerText = n
+                        r=0
+                        c=1
+                        length(n)
+                    }
+                    else{
+                        
+                        n = parseFloat(n)
+                        n = n/100
+                        number.innerText = ''
+                        oprtn.innerText = ''
+                        number.innerText = n
+                        n=number.innerText
+                        length(n)
+                        p=1
+                        r=0
+                        c=1
+                    }    
+                }
+                if(e==equal || event.key == 'Enter'){
+                    n=parseFloat(n)
+                    oprtn.innerText = ''
+                    number.innerText = ''
+                    number.innerText = n
+                    n=number.innerText
+                    l=0
+                    r=0
+                    p=1
+                    fontNorm()
+                    
+                }
+                if(e==one || event.key == '1'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 1
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=1
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==two || event.key == '2'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 2
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=2
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==three || event.key == '3'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 3
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=3
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==four || event.key == '4'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 4
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=4
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==five || event.key == '5'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 5
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=5
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==six || event.key == '6'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 6
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=6
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==seven || event.key == '7'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 7
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=7
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==eight || event.key == '8'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 8
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=8
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==nine || event.key == '9'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 9
+                            n2=number2.innerText
+                        }
+                        else{
+                            n2=9
+                            number2.innerText += n2
+                            n2 = number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+
+                }
+                if(e==zero || event.key == '0'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = 0
+                        }
+                        else{
+                            n2=0
+                            number2.innerText += n2
+                            n2=number2.innerText
+                        }
+                        res=1
+                        c=0
+                    }
+                }
+                if(e==dot || event.key == '.'){
+                    length(n2)
+                    if(l<19){
+                        if(n2===0){
+                            number2.innerText = '0.'
+                            n2=number2.innerText
+                            d2=0
+                        }
+                        else{
+                            if(d2==1){
+                                n2='.'
+                                number2.innerText +=n2
+                                n2=number2.innerText
+                                d2=0
+                            }
+                        }
+                    }
+                }
+                
+                if(e==clearall || event.key == 'Delete'){
+                    number.innerText = 0
+                    number2.innerText = ''
+                    oprtn.innerText = ''
+                    result.innerText = ''
+                    r=0
+                    n=0
+                    n2=0
+                    res=0
+                    c=0
+                    p=0
+                    a=0
+                    d1=1
+                    d2=1
+                    l=0
+                    fontNorm()
+                }
+                if(e==delet || event.key == 'Backspace'){
+                    if(c==1){
+                        if(oprtn.innerText != ''){
+                            oprtn.innerText = ''
+                            c=0
+                            r=0
+                            
+                        }
+                        
+                        //s1=n
+                        //result.innerText = ''
+                        //s1 = s1.slice(0, -1)
+                        //n = s1
+                        //number.innerText = n
+                        
+                        /*s1=number.innerText
+                        
+                        if(s1==''){
+                            number.innerText = ''
+                        }
+                        else{
+                            if(oprtn.innerText != ''){
+                                oprtn.innerText = ''
+                            }
+                            else{
+                                s1=s1.slice(0,-1)
+                                n=parseInt(s1)
+                                number.innerText = n
+                            }
+                        }*/
+                      
+                    }
+                    else{
+                        if(oprtn.innerText != '' && res==0){
+                            oprtn.innerText = ''
+                            r=0
+                            
+                        }
+                        
+                        /*if(number2.innerText != ''){
+                            res=1
+                            s2=number2.innerText
+                            n2=s2.slice(0,-1)
+                            number.innerText = n
+                            oprtn.innerText = symbol
+                            number2.innerText = n2
+                        }
+                        else{
+                            if(oprtn.innerText != ''){
+                                oprtn.innerText = ''
+                                r=0
+                            }
+                        }*/
+
+                        //s1=number.innerText+oprtn.innerText
+                        //s1=s1.slice(0, -1)
+                        //oprtn.innerText = ''
+                        //r=0
+                        //n=s1
+                        //number.innerText = s1                        
+                    } 
+                    
+                }
+            }
+            if(res==1){
+                if(e==equal || event.key == 'Enter'){
+                    
+                    if(symbol=='+'){ 
+                        //addition(n,n2,res,0,1,1,1)
+                        
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        res = parseFloat(n+n2)
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        result.innerText = res
+                        length(res)
+                        k = result.innerText 
+                        n=0
+                        n2=0
+                        res = 0                       
+                        r=0
+                        c=1  
+                        p=1
+                        a=1
+                        d1=1
+                        d2=1
+                        l=0
+                        fontNorm()
+                        
+                    }
+                    if(symbol=='-'){
+                        //supraction(n,n2,res,0,1,1,1)
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        res = parseFloat(n-n2)
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        result.innerText = res
+                        length(res)
+                        k = result.innerText
+                        n=0
+                        n2=0 
+                        res = 0                       
+                        r=0
+                        c=1  
+                        p=1
+                        a=1
+                        d1=1
+                        d2=1
+                        l=0
+                        fontNorm()
+                    }
+                    if(symbol=='*'){
+                        //multiplication(n,n2,res,0,1,1,1)
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        res = parseFloat(n*n2)
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        result.innerText = res
+                        length(res)
+                        k = result.innerText
+                        n=0 
+                        n2=0
+                        res = 0                       
+                        r=0
+                        c=1  
+                        p=1
+                        a=1
+                        d1=1
+                        d2=1
+                        l=0
+                        formNorm()
+                    }
+                    if(symbol=='/'){
+                        //division(n,n2,res,0,1,1,1)
+                        n= parseFloat(n)
+                        n2= parseFloat(n2)
+                        res = parseFloat(n/n2)
+                        number.innerText = ''
+                        number2.innerText = ''
+                        oprtn.innerText = ''
+                        result.innerText = res
+                        length(res)
+                        k = result.innerText 
+                        n=0
+                        res = 0   
+                        n2=0                    
+                        r=0
+                        c=1  
+                        p=1
+                        a=1 
+                        d1=1
+                        d2=1 
+                        l=0
+                        fontNorm()                  
+                    }
+                    
+                }
+                if(e==clearall || event.key == 'Delete'){
+                    number.innerText = 0
+                    number2.innerText = ''
+                    result.innerText = ''
+                    oprtn.innerText = ''
+                    reader.style.fontSize = '55px'
+                    r=0
+                    n=0
+                    n2=0
+                    res=0
+                    c=0
+                    p=0
+                    a=0
+                    d1=1
+                    d2=1
+                    l=0
+                    fontNorm()
+                }
+                if(e==delet || event.key == 'Backspace'){
+                    if(c==1){
+                        s1 = number.innerText
+                        result.innerText = ''
+                        s1 = s1.slice(0, -1)
+                        n = s1
+                        number.innerText = n
+                    }
+                    else{
+                        //res=0
+                        if(number2.innerText != ''){
+                            s2=number2.innerText
+                            n2=s2.slice(0,-1)
+                            number.innerText = n
+                            oprtn.innerText = symbol
+                            number2.innerText = n2
+                            if(number2.innerText == ''){
+                                res = 0
+                                d2=1
+                                l=0
+                                fontNorm()
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+            }
+            
+            e.style.opacity = '0.5' 
+            
+            
+            
+        }  
+        //document.addEventListener('keyup', up)
+        function up(e){
+            e.style.opacity = '1'
+
+        }
+        
+        function fontDcr(){
+            number.style.top = '10%'
+            number.style.fontSize = '20px'
+            number.style.marginRight = '3%'
+            oprtn.style.top = '10%'
+            oprtn.style.fontSize = '20px'
+        }
+        function fontNorm(){
+            number.style.top = '30%'
+            number.style.fontSize = '55px'
+            number.style.marginRight = '0%'
+            oprtn.style.top = '30%'
+            oprtn.style.fontSize = '55px'
+        }
+        
+        function Point(y){
+            z=y
+            d=z.indexOf('.')
+            //gj.innerText = d
+            //while(i<=z.length){
+            
+            if(d!=-1){
+                //z=z.reverse()
+                z=z.split('')
+                z=z.reverse()
+                d=z.indexOf('.')
+                if(d==0){
+                    n=parseInt(y)
+                }
+            
+                z=z.slice(0,d)
+                len = z.length
+                for(i=0;i<len;i++){
+                    
+                    if(z[0]==0){
+                        z=y
+                        z=z.slice(0,-1)
+                        y=z
+                        z=z.split('')
+                        z=z.reverse()
+                        d=z.indexOf('.')
+                        z=z.slice(0,d)
+                        if(z[0]!=0){
+                            break
+                        }
+                        //gj.innerText = z
+                        
+                    } 
+                }
+                n=y
+                z=n
+                z=z.split('')
+                z=z.reverse()
+                if(z[0]=='.'){
+                    n=parseInt(y)
+                }
+                
+            }
+            
+            
+            
+            //}
+                /*z=z.split('')
+                z=z.reverse()
+                //gj.innerText = z
+                if(z[i]>d && z[0]==0){
+                    z=y
+                    z=z.slice(0,-1)
+                    n=z
+                    //j.innerText += n
+                }
+                if(z[0]='.'){
+                    n=parseInt(y)
+                }
+                i+=1*/
+            
+        }
+         
+         
+    </script>
+    <style>
+        body{
+            background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url({{ url_for('static', filename='images/bgImg.jpg') }});
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #main{
+            background-color: #919191;
+            display: block;
+            max-width:  100vw;
+            width:100%;
+            height:80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            
+        }
+        #reader{
+            border: 0;
+            display:flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            width: 100%;
+            height: 30%;
+            font-size: 55px;
+        }
+        
+        #num{
+            
+            position:absolute;
+            top:30%;
+        
+        }
+        #sym{
+            position:absolute;
+            top:30%; 
+        }
+        #num2{
+            position:absolute;
+            top:30%;
+        }
+        .inner{
+            
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            width: 100%;
+            height: 70%;
+        }
+        .item{
+            margin: 2%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-justify: center;
+            background-color: #eaedef;
+            border-radius: 50%;
+        }
+        
+
+
+
+    
+    </style>
+    </div>
+
+</body>
+</html>
